@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>example</groupId>
+        <artifactId>protobuf-maven-plugin-bug</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>example-proto</artifactId>
+
+    <properties>
+        <protobuf.version>3.25.3</protobuf.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>example</groupId>
+            <artifactId>example-generator</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.github.ascopes</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>2.4.5</version>
+
+                <configuration>
+                    <protocVersion>${protobuf.version}</protocVersion>
+
+                    <jvmMavenPlugins>
+                        <jvmMavenPlugin>
+                            <groupId>example</groupId>
+                            <artifactId>example-generator</artifactId>
+                            <version>${project.version}</version>
+                        </jvmMavenPlugin>
+                    </jvmMavenPlugins>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
