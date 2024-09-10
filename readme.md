@@ -4,6 +4,8 @@ While writing a custom Java protoc generator, I'd like to be able to use the `pr
 proto files and test the generator. However, I'm running into an issue where the plugin is not able to find my custom 
 generator class when using `mvn compile`.
 
+This is the minimal example to reproduce https://github.com/ascopes/protobuf-maven-plugin/issues/358
+
 ## Steps to reproduce
 
 1. Clone this repository
